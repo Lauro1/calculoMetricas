@@ -1,0 +1,34 @@
+# Definição dos valores da matriz de confusão
+VP = 40  # Verdadeiros Positivos
+FN = 10  # Falsos Negativos
+FP = 15  # Falsos Positivos
+VN = 35  # Verdadeiros Negativos
+
+# Cálculo das métricas
+def calcular_metricas(VP, VN, FP, FN):
+    # Sensibilidade (Recall)
+    sensibilidade = VP / (VP + FN) if (VP + FN) != 0 else 0
+
+    # Especificidade
+    especificidade = VN / (FP + VN) if (FP + VN) != 0 else 0
+
+    # Acurácia
+    N = VP + VN + FP + FN
+    acuracia = (VP + VN) / N if N != 0 else 0
+
+    # Precisão
+    precisao = VP / (VP + FP) if (VP + FP) != 0 else 0
+
+    # F-score
+    f_score = 2 * (precisao * sensibilidade) / (precisao + sensibilidade) if (precisao + sensibilidade) != 0 else 0
+
+    # Exibindo os resultados
+    print("Métricas de Avaliação:")
+    print(f"Sensibilidade (Recall): {sensibilidade:.2f}")
+    print(f"Especificidade: {especificidade:.2f}")
+    print(f"Acurácia: {acuracia:.2f}")
+    print(f"Precisão: {precisao:.2f}")
+    print(f"F-score: {f_score:.2f}")
+
+# Chamando a função para calcular e mostrar os resultados
+calcular_metricas(VP, VN, FP, FN)
